@@ -1,15 +1,15 @@
-# cse4001_sync — Synchronization Problems (Readers-Writers & Dining Philosophers)
+# Solution 1
+![output screenshot](Sol1.png)
+Implements Downey’s “no starvation” algorithm using a reader’s lightswitch and a writer-controlled turnstile. Readers may enter together, writers enter one at a time, and neither group starves.
 
-This repository contains implementations of four classic synchronization problems using semaphores, following the algorithms from **Allen B. Downey – The Little Book of Semaphores**.
+# Solution 2
+![output screenshot](Sol2.png)
+Uses both a reader lightswitch and a writer lightswitch. Writers block the turnstile so new readers cannot enter, ensuring writers always get priority and never wait behind readers.
 
-The project uses POSIX threads (`pthread`) and a custom `Semaphore` class provided in the starter code.
+# Solution 3
+![output screenshot](Sol3.png)
+Prevents deadlock by allowing only 4 philosophers to sit at the table at once. A “room” semaphore ensures at least one fork is always free, avoiding circular wait.
 
----
-
-## 🧵 How to Compile
-
-Run:
-
-```bash
-make
-
+# Solution 4
+![output screenshot](Sol4.png)
+Breaks circular wait by alternating fork-pickup order: odd philosophers take left fork first, even philosophers take right fork first. This guarantees at least one philosopher can always eat.
